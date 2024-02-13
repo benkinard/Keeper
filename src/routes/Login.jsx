@@ -1,16 +1,29 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
+// import { Auth } from "aws-amplify";
 import "./Login.css";
 
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
 
-        navigate("/");
+        try {
+            // await Auth.signIn(email, password);
+            // navigate("/");
+            alert("Logged in");
+        } catch (error) {
+            // Prints the full error
+            console.error(error);
+            if (error instanceof Error) {
+                alert(error.message);
+            } else {
+                alert(String(error));
+            }
+        }
     }
 
     return (
